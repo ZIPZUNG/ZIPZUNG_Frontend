@@ -9,6 +9,8 @@ const App = () => {
 			<BrowserRouter>
 				<Routes>
 					<Route path="/" element={<R.Home />} />
+					<Route path="/search" element={<R.Search />} />
+					<Route path="/detail" element={<R.Detail />} />
 				</Routes>
 			</BrowserRouter>
 		</RecoilRoot>
