@@ -11,6 +11,7 @@ const App = () => {
 					<Route path="/" element={<R.Home />} />
 					<Route path="/search" element={<R.Search />} />
 					<Route path="/detail" element={<R.Detail />} />
+					<Route path="/application" element={<R.Application />} />
 				</Routes>
 			</BrowserRouter>
 		</RecoilRoot>
