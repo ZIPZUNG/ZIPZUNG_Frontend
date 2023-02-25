@@ -10,8 +10,8 @@ const Header = () => {
 			</S.HeaderLogoWrap>
 			<S.NavigationWrap>
 				<S.Navigation to="/search">공인중개사</S.Navigation>
-				<S.Navigation to="/search">생활서비스</S.Navigation>
-				<S.Navigation to="/search">집중케어</S.Navigation>
+				<S.Navigation to="/service">생활서비스</S.Navigation>
+				<S.Navigation to="/care">집중케어</S.Navigation>
 				<S.Navigation to="/life">생활전문가 등록</S.Navigation>
 				<S.Navigation to="/estate">공인중개사 등록</S.Navigation>
 			</S.NavigationWrap>
