@@ -27,3 +27,16 @@ code {
 	padding: 0;
 	margin: 0;
 }
+
+input[type='file']::file-selector-button {
+	width: 76px;
+	height: 24px;
+	background: black;
+	color: white;
+	border: 1px solid rgb(77, 77, 77);
+	cursor: pointer;
+	&:hover {
+		background: rgb(77, 77, 77);
+		color: #fff;
+	}
+}
