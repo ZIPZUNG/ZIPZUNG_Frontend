@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 export const HeaderWrap = styled.div`
 	width: 100vw;
-	height: 80px;
+	height: 64px;
 	display: flex;
 	padding-bottom: 8px;
 	border-bottom: 1px solid #ccc;
@@ -57,8 +57,8 @@ export const NavigationWrap = styled.div`
 
 export const Navigation = styled(Link)`
 	margin: 6px 30px 0 30px;
-	font-size: 18px;
-	font-weight: 800;
+	font-size: 16px;
+	font-weight: 600;
 	cursor: pointer;
 	text-decoration: none;
 	color: black;
