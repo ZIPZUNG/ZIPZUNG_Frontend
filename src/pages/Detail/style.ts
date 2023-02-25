@@ -133,6 +133,23 @@ export const ContactButton = styled.button`
 	border: none;
 `
 
+export const ToggleSelectionWrap = styled.div`
+	display: flex;
+	margin-bottom: 20px;
+`
+
+export const ToggleSelection = styled.div`
+	margin: 0 10px 0 10px;
+	cursor: pointer;
+	font-size: 18px;
+	font-weight: 700;
+	border-bottom: ${(props) => (props.color === 'true' ? '2px solid black' : '')};
+
+	&:first-child {
+		margin-left: 0;
+	}
+`
+
 export const DetailInfoText = styled.span`
 	font-size: 14px;
 	font-weight: 800;
@@ -154,7 +171,7 @@ export const DetailMainDescriptionText = styled.span`
 	font-size: 16px;
 	font-weight: 500;
 	line-height: 26px;
-	margin-bottom: 40px;
+	margin-bottom: 8px;
 `
 
 export const DetailMainNavigationWrap = styled.div`
@@ -168,4 +185,58 @@ export const DetailMainNavigation = styled.svg`
 		margin-left: 0;
 	}
 	margin: 0 10px 0 10px;
+`
+
+export const DetailToggleView = styled.div`
+	font-size: 14px;
+	font-weight: 600;
+	padding-top: 8px;
+	border-top: 1px solid #ccc;
+	width: 36vw;
+	cursor: pointer;
+	margin-bottom: 40px;
+
+	span {
+		margin-right: 4px;
+	}
+`
+
+export const DetailCustomerReviewWrap = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+`
+
+export const DetailCustomerBox = styled.div`
+	width: 78vw;
+	background-color: #f2f3f7;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	margin: 4px 0 4px 0;
+`
+
+export const DetailCustomerTitle = styled.span`
+	font-size: 16px;
+	font-weight: 700;
+`
+
+export const DetailCustomerReview = styled.span`
+	font-size: 14px;
+`
+
+export const DetailCustomerImgWrap = styled.div`
+	display: flex;
+`
+
+export const DetailCustomerImg = styled.img`
+	width: 120px;
+	height: 100px;
+	border-radius: 4px;
+	margin: 12px 6px 0 6px;
+
+	&:first-child {
+		margin-left: 0;
+	}
 `
