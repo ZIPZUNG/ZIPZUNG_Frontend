@@ -10,13 +10,14 @@ const Header = () => {
 			</S.HeaderLogoWrap>
 			<S.NavigationWrap>
 				<S.Navigation to="/search">공인중개사</S.Navigation>
-				<S.Navigation to="/search">생활 서비스 신청</S.Navigation>
-				<S.Navigation to="/search">집중 케어</S.Navigation>
-				<S.Navigation to="/application">프로필 등록</S.Navigation>
+				<S.Navigation to="/search">생활서비스</S.Navigation>
+				<S.Navigation to="/search">집중케어</S.Navigation>
+				<S.Navigation to="/life">생활전문가 등록</S.Navigation>
+				<S.Navigation to="/estate">공인중개사 등록</S.Navigation>
 			</S.NavigationWrap>
-			<S.LoginWrap>
+			<S.LoginButtonWrap to="/login">
 				<S.LoginButton>로그인 및 회원가입</S.LoginButton>
-			</S.LoginWrap>
+			</S.LoginButtonWrap>
 		</S.HeaderWrap>
 	)
 }

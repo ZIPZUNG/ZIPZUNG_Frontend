@@ -64,13 +64,14 @@ export const Navigation = styled(Link)`
 	color: black;
 `
 
-export const LoginWrap = styled.div`
+export const LoginButtonWrap = styled(Link)`
 	width: 200px;
 	height: 100%;
 	display: flex;
 	margin-left: auto;
 	justify-content: center;
 	align-items: center;
+	text-decoration: none;
 
 	@media ALL and (max-width: 600px) {
 		display: none;
@@ -79,6 +80,7 @@ export const LoginWrap = styled.div`
 
 export const LoginButton = styled.button`
 	width: 130px;
+	cursor: pointer;
 	margin-top: 6px;
 	border: none;
 	border-radius: 4px;
