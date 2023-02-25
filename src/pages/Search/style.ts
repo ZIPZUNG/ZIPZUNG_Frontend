@@ -38,7 +38,8 @@ export const SearchProfileImageWrap = styled.div`
 	height: 100%;
 	width: 20%;
 	display: flex;
-	justify-content: center;
+	align-items: center;
+	flex-direction: column;
 
 	@media ALL and (max-width: 600px) {
 		width: 20vw;
@@ -47,15 +48,27 @@ export const SearchProfileImageWrap = styled.div`
 `
 
 export const SearchProfileImage = styled.img`
-	width: 120px;
-	height: 120px;
+	width: 100px;
+	height: 100px;
 	border-radius: 999px;
-	margin-top: 30px;
+	margin-top: 20px;
+	margin-bottom: 12px;
 	border: 1px solid #ccc;
 
 	@media ALL and (max-width: 600px) {
 		width: 60px;
 		height: 60px;
+	}
+`
+
+export const SearchProfileInfo = styled.div`
+	color: black;
+	font-weight: 600;
+	font-size: 14px;
+	margin: 2px 0 2px 0;
+
+	span {
+		font-weight: 800;
 	}
 `
 
@@ -74,7 +87,7 @@ export const SearchProfileWrap = styled.div`
 export const ProfileName = styled.span`
 	font-size: 20px;
 	font-weight: 700;
-	margin-top: 30px;
+	margin-top: 24px;
 `
 
 export const ProfileDescription = styled.span`
@@ -94,21 +107,23 @@ export const ProfileInfo = styled.span`
 `
 
 export const ProfileLine = styled.div`
-	margin: 12px 0 16px 0;
+	margin: 12px 0 8px 0;
 	width: 100%;
 	height: 1px;
 	background-color: #ccc;
 `
 
-export const HashTagWrap = styled.div`
+export const ProfileReviewWrap = styled.div`
 	display: flex;
 `
 
-export const HashTag = styled.div`
-	width: fit-content;
-	border-radius: 999px;
-	margin: 0 4px 0 4px;
-	font-size: 14px;
-	padding: 4px 12px 4px 12px;
-	background-color: #f2f3f7;
+export const ProfileReviewImg = styled.img`
+	width: 120px;
+	height: 120px;
+	margin: 0 8px 0 8px;
+	border-radius: 4px;
+
+	&:first-child {
+		margin-left: 0;
+	}
 `
