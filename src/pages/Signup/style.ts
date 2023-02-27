@@ -11,37 +11,47 @@ export const SignupWrap = styled.div`
 `
 
 export const SignupBox = styled.div`
-	width: 34vw;
-	height: 70vh;
+	width: 32vw;
+	height: 82vh;
 	border: 2px solid #ccc;
 	border-radius: 12px;
 	display: flex;
 	flex-direction: column;
+	align-items: center;
+`
+
+export const SignupLogoWrap = styled.div`
+	margin: 40px 0 20px 0;
+	display: flex;
 	justify-content: center;
 	align-items: center;
 `
 
 export const SignupLogo = styled.img`
-	width: 80px;
-	height: 80px;
-	margin-bottom: 20px;
+	width: 32px;
+	height: 32px;
+`
+
+export const SignupText = styled.span`
+	font-size: 20px;
+	font-weight: 700;
+	margin-left: 8px;
 `
 
 export const SignupInput = styled.input`
-	width: 340px;
-	height: 42px;
+	width: 280px;
+	height: 36px;
 	margin: 8px 0 8px 0;
-	padding-left: 12px;
-	font-size: 16px;
+	font-size: 14px;
 	box-sizing: border-box;
 	border: none;
-	border-bottom: 2px solid black;
+	border-bottom: 1px solid #ccc;
 	outline: none;
 `
 
 export const SignupButton = styled.button`
 	margin-top: 30px;
-	width: 340px;
+	width: 320px;
 	height: 46px;
 	box-sizing: border-box;
 	background-color: black;
@@ -63,4 +73,25 @@ export const NavigateSignup = styled(Link)`
 		color: blue;
 		font-weight: 700;
 	}
+`
+
+export const SignupCheck = styled.div`
+	margin-top: 20px;
+	display: flex;
+	flex-direction: column;
+`
+
+export const SignupCheckWrap = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 3px auto 3px 0;
+`
+
+export const SignupCheckbox = styled.input``
+
+export const SignupCheckLabel = styled.label`
+	margin-left: 4px;
+	font-size: 14px;
+	font-weight: 600;
 `

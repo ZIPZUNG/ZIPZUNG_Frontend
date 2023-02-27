@@ -11,37 +11,47 @@ export const LoginWrap = styled.div`
 `
 
 export const LoginBox = styled.div`
-	width: 34vw;
-	height: 70vh;
+	width: 32vw;
+	height: 52vh;
 	border: 2px solid #ccc;
 	border-radius: 12px;
 	display: flex;
 	flex-direction: column;
+	align-items: center;
+`
+
+export const LoginLogoWrap = styled.div`
+	margin: 40px 0 20px 0;
+	display: flex;
 	justify-content: center;
 	align-items: center;
 `
 
 export const LoginLogo = styled.img`
-	width: 80px;
-	height: 80px;
-	margin-bottom: 20px;
+	width: 32px;
+	height: 32px;
+`
+
+export const LoginText = styled.span`
+	font-size: 20px;
+	font-weight: 700;
+	margin-left: 8px;
 `
 
 export const LoginInput = styled.input`
-	width: 340px;
-	height: 42px;
-	margin: 12px 0 12px 0;
-	padding-left: 12px;
-	font-size: 16px;
+	width: 280px;
+	height: 36px;
+	margin: 8px 0 8px 0;
+	font-size: 14px;
 	box-sizing: border-box;
 	border: none;
-	border-bottom: 2px solid black;
+	border-bottom: 1px solid #ccc;
 	outline: none;
 `
 
 export const LoginButton = styled.button`
-	margin-top: 80px;
-	width: 340px;
+	margin-top: 30px;
+	width: 320px;
 	height: 46px;
 	box-sizing: border-box;
 	background-color: black;
@@ -53,7 +63,7 @@ export const LoginButton = styled.button`
 	cursor: pointer;
 `
 
-export const NavigateSignup = styled(Link)`
+export const NavigateLogin = styled(Link)`
 	margin-top: 10px;
 	text-decoration: none;
 	color: black;

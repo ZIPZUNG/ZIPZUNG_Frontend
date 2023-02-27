@@ -65,7 +65,6 @@ export const Navigation = styled(Link)`
 `
 
 export const LoginButtonWrap = styled(Link)`
-	width: 200px;
 	height: 100%;
 	display: flex;
 	margin-left: auto;
@@ -87,4 +86,69 @@ export const LoginButton = styled.button`
 	height: 36px;
 	background-color: black;
 	color: white;
+	box-sizing: border-box;
+`
+
+export const NavigationSideWrap = styled.div`
+	width: fit-content;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+
+	@media ALL and (max-width: 600px) {
+		display: none;
+	}
+
+	&:hover {
+		#hover {
+			display: block;
+		}
+	}
+`
+
+export const NavigationSide = styled.div`
+	margin: 6px 30px 0 26px;
+	width: 120px;
+	height: 36px;
+	border: 2px solid black;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 14px;
+	font-weight: 600;
+	cursor: pointer;
+	box-sizing: border-box;
+	border-radius: 4px;
+	text-decoration: none;
+	color: black;
+`
+
+export const NavigationHoverWrap = styled.div`
+	display: none;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	width: 124px;
+	height: 70px;
+	background-color: black;
+	position: fixed;
+	top: 8%;
+	border: 2px solid black;
+	font-size: 14px;
+	font-weight: 500;
+`
+
+export const NavigationHover = styled(Link)`
+	width: 120px;
+	height: 32px;
+	border: 2px solid white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	&:last-child {
+		border-top: none;
+	}
+	color: white;
+	text-decoration: none;
 `
