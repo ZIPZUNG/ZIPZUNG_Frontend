@@ -2,11 +2,11 @@ import { Header, SearchEngine } from 'allFiles'
 import React from 'react'
 import * as S from './style'
 
-const Search = () => {
+const SearchEstate = () => {
 	return (
 		<S.SearchWrap>
 			<Header />
-			<SearchEngine />
+			<SearchEngine type="estate" />
 			<S.SearchResultWrap>
 				{[1, 1, 1, 1, 1, 1, 1].map((_, index) => (
 					<S.SearchResult to="/detail" key={index}>
@@ -40,4 +40,4 @@ const Search = () => {
 	)
 }
 
-export default Search
+export default SearchEstate
