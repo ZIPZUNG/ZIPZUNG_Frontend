@@ -8,7 +8,6 @@ import EstateEnroll from 'pages/EstateEnroll'
 import LifeEnroll from 'pages/LifeEnroll'
 import Service from 'pages/Service'
 import Care from 'pages/Care'
-import SearchLife from 'pages/SearchLife'
-import SearchEstate from 'pages/SearchEstate'
+import Search from 'pages/Search'
 
-export { Home, Header, Detail, SearchEngine, Login, Signup, EstateEnroll, LifeEnroll, Service, Care, SearchLife, SearchEstate }
+export { Home, Header, Detail, SearchEngine, Login, Signup, EstateEnroll, LifeEnroll, Service, Care, Search }

@@ -9,8 +9,8 @@ const Header = () => {
 				<S.HeaderLogoText>ZIPZUNG</S.HeaderLogoText>
 			</S.HeaderLogoWrap>
 			<S.NavigationWrap>
-				<S.Navigation to="/search/estate">공인중개사</S.Navigation>
-				<S.Navigation to="/search/life">생활서비스</S.Navigation>
+				<S.Navigation to="/search?type=estate">공인중개사</S.Navigation>
+				<S.Navigation to="/search?type=life">생활서비스</S.Navigation>
 				<S.Navigation to="/care">집중케어</S.Navigation>
 			</S.NavigationWrap>
 			<S.LoginButtonWrap to="/login">

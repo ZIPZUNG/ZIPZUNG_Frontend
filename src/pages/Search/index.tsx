@@ -1,12 +1,21 @@
 import { Header, SearchEngine } from 'allFiles'
-import React from 'react'
+import React, { useEffect } from 'react'
+import { flushSync } from 'react-dom'
+import { useParams } from 'react-router-dom'
 import * as S from './style'
 
-const SearchEstate = () => {
+const Search = () => {
+	const router = useParams()
+	const [type, setType] = React.useState('')
+
+	useEffect(() => {
+		setType(window.location.search.replace('?type=', ''))
+	}, [router])
+
 	return (
 		<S.SearchWrap>
 			<Header />
-			<SearchEngine type="estate" />
+			<SearchEngine type={type} />
 			<S.SearchResultWrap>
 				{[1, 1, 1, 1, 1, 1, 1].map((_, index) => (
 					<S.SearchResult to="/detail" key={index}>
@@ -40,4 +49,4 @@ const SearchEstate = () => {
 	)
 }
 
-export default SearchEstate
+export default Search
