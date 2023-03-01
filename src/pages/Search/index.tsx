@@ -1,6 +1,5 @@
 import { Header, SearchEngine } from 'allFiles'
 import React, { useEffect } from 'react'
-import { flushSync } from 'react-dom'
 import { useParams } from 'react-router-dom'
 import * as S from './style'
 
