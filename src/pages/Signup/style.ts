@@ -95,3 +95,9 @@ export const SignupCheckLabel = styled.label`
 	font-size: 14px;
 	font-weight: 600;
 `
+
+export const isNotMatchPasswordText = styled.span`
+	font-size: 12px;
+	font-weight: 600;
+	color: red;
+`
