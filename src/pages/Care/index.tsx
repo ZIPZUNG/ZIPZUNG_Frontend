@@ -1,12 +1,105 @@
 import { Header } from 'allFiles'
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
 import * as S from './style'
 
+interface reducerAction {
+	name: string
+	value: string
+}
+
+function reducer(state: any, action: reducerAction) {
+	return {
+		...state,
+		[action.name]: action.value,
+	}
+}
+
 const Care = () => {
-	const navigate = useNavigate()
-	const onClickCare = () => {
-		navigate('/')
+	const [state, dispatch] = React.useReducer(reducer, {
+		name: '',
+		contact: '',
+		movingInDate: '',
+		expert: '',
+		category: '',
+		capital: '',
+		etcReq: '',
+	})
+	const { name, contact, movingInDate, expert, category, capital, etcReq } = state
+
+	const [contactTime, setContactTime] = React.useState<string[]>([])
+	const [service, setService] = React.useState<string[]>([])
+	const [isOK, setIsOK] = React.useState(false)
+
+	const [expertEtc, setExpertEtc] = React.useState('')
+	const [categoryEtc, setCategoryEtc] = React.useState('')
+	const [capitalEtc, setCapitalEtc] = React.useState('')
+
+	const onChangeReducer = (e: React.ChangeEvent<HTMLInputElement>) => {
+		dispatch(e.target)
+	}
+
+	const onClickSubmitForm = () => {
+		if (!name) {
+			alert('이름을 입력해주세요!')
+			return
+		}
+		if (!contact) {
+			alert('연락처를 입력해주세요!')
+			return
+		}
+		if (!movingInDate) {
+			alert('입주 가능일을 선택해주세요!')
+			return
+		}
+		if (!expert) {
+			alert('전문가 항목을 확인해주세요!')
+			return
+		}
+		if (!category) {
+			alert('유형 항목을 확인해주세요!')
+			return
+		}
+		if (!capital) {
+			alert('자본금 항목을 확인해주세요!')
+			return
+		}
+		if (!contactTime) {
+			alert('연락 가능 시간 항목을 확인해주세요!')
+			return
+		}
+		if (!service) {
+			alert('서비스 항목을 확인해주세요!')
+			return
+		}
+		if (expert === '기타' && !expertEtc.length) {
+			alert('기타 항목의 전문가를 입력란에 기재해주세요!')
+			return
+		}
+		if (category === '기타' && !categoryEtc.length) {
+			alert('기타 항목의 유형을 입력란에 기재해주세요!')
+			return
+		}
+		if (capital === '기타' && !capitalEtc.length) {
+			alert('기타 항목의 자본금을 입력란에 기재해주세요!')
+			return
+		}
+		if (!isOK) {
+			alert('생활 서비스 신청에 동의하지 않으셨습니다. 항목을 다시 확인해주세요.')
+			return
+		}
+
+		console.log({
+			name: name,
+			contact: contact,
+			movingInDate: movingInDate,
+			expert: expert,
+			category: category,
+			capital: capital,
+			etcReq: etcReq,
+			contactTime: contactTime,
+			service: service,
+		})
+		// api
 	}
 
 	return (
@@ -24,188 +117,218 @@ const Care = () => {
 					</S.CareDescription>
 					<S.CareInputWrap>
 						<S.CareInputTitle>성명을 입력해주세요</S.CareInputTitle>
-						<S.CareInput placeholder="홍길동" />
+						<S.CareInput placeholder="홍길동" name="name" value={name} onChange={onChangeReducer} />
 					</S.CareInputWrap>
 					<S.CareInputWrap>
 						<S.CareInputTitle>인증된 연락처를 입력해주세요</S.CareInputTitle>
-						<S.CareInput placeholder="010-1234-5678" />
+						<S.CareInput placeholder="010-1234-5678" name="contact" value={contact} onChange={onChangeReducer} />
 					</S.CareInputWrap>
 					<S.CareInputWrap>
 						<S.CareInputTitle style={{ marginBottom: '4px' }}>연락 가능한 시간을 선택해주세요.</S.CareInputTitle>
 						<S.CareCheckWrap>
-							<S.CareCheckbox type="checkbox" id="1" name="care" />
+							<S.CareCheckbox
+								type="checkbox"
+								value="9:00 ~ 11:00"
+								id="1"
+								name="contactTime"
+								onChange={(e) => setContactTime([...contactTime, e.target.value])}
+							/>
 							<S.CareCheckLabel htmlFor="1">9:00 ~ 11:00</S.CareCheckLabel>
 						</S.CareCheckWrap>
 						<S.CareCheckWrap>
-							<S.CareCheckbox type="checkbox" id="2" name="care" />
+							<S.CareCheckbox
+								type="checkbox"
+								value="11:00 ~ 13:00"
+								id="2"
+								name="contactTime"
+								onChange={(e) => setContactTime([...contactTime, e.target.value])}
+							/>
 							<S.CareCheckLabel htmlFor="2">11:00 ~ 13:00</S.CareCheckLabel>
 						</S.CareCheckWrap>
 						<S.CareCheckWrap>
-							<S.CareCheckbox type="checkbox" id="3" name="care" />
+							<S.CareCheckbox
+								type="checkbox"
+								value="13:00 ~ 15:00"
+								id="3"
+								name="contactTime"
+								onChange={(e) => setContactTime([...contactTime, e.target.value])}
+							/>
 							<S.CareCheckLabel htmlFor="3">13:00 ~ 15:00</S.CareCheckLabel>
 						</S.CareCheckWrap>
 						<S.CareCheckWrap>
-							<S.CareCheckbox type="checkbox" id="4" name="care" />
+							<S.CareCheckbox
+								type="checkbox"
+								value="15:00 ~ 17:00"
+								id="4"
+								name="contactTime"
+								onChange={(e) => setContactTime([...contactTime, e.target.value])}
+							/>
 							<S.CareCheckLabel htmlFor="4">15:00 ~ 17:00</S.CareCheckLabel>
 						</S.CareCheckWrap>
 						<S.CareCheckWrap>
-							<S.CareCheckbox type="checkbox" id="5" name="care" />
+							<S.CareCheckbox
+								type="checkbox"
+								value="17:00 ~ 19:00"
+								id="5"
+								name="contactTime"
+								onChange={(e) => setContactTime([...contactTime, e.target.value])}
+							/>
 							<S.CareCheckLabel htmlFor="5">17:00 ~ 19:00</S.CareCheckLabel>
 						</S.CareCheckWrap>
 					</S.CareInputWrap>
 					<S.CareInputWrap>
 						<S.CareInputTitle>전문가를 선택해주세요.</S.CareInputTitle>
 						<S.CareCheckWrap>
-							<S.CareCheckbox type="radio" name="specialty" id="m" />
+							<S.CareCheckbox type="radio" name="expert" value="필요 없음" onChange={onChangeReducer} id="m" />
 							<S.CareCheckLabel htmlFor="m">필요 없음</S.CareCheckLabel>
 						</S.CareCheckWrap>
 						<S.CareCheckWrap>
-							<S.CareCheckbox type="radio" name="specialty" id="a" />
+							<S.CareCheckbox type="radio" name="expert" value="아파트" onChange={onChangeReducer} id="a" />
 							<S.CareCheckLabel htmlFor="a">아파트</S.CareCheckLabel>
 						</S.CareCheckWrap>
 						<S.CareCheckWrap>
-							<S.CareCheckbox type="radio" name="specialty" id="b" />
+							<S.CareCheckbox type="radio" name="expert" value="원룸/오피스텔" onChange={onChangeReducer} id="b" />
 							<S.CareCheckLabel htmlFor="b">원룸/오피스텔</S.CareCheckLabel>
 						</S.CareCheckWrap>
 						<S.CareCheckWrap>
-							<S.CareCheckbox type="radio" name="specialty" id="c" />
+							<S.CareCheckbox type="radio" name="expert" value="주택/빌라" onChange={onChangeReducer} id="c" />
 							<S.CareCheckLabel htmlFor="c">주택/빌라</S.CareCheckLabel>
 						</S.CareCheckWrap>
 						<S.CareCheckWrap>
-							<S.CareCheckbox type="radio" name="specialty" id="d" />
+							<S.CareCheckbox type="radio" name="expert" value="사무실" onChange={onChangeReducer} id="d" />
 							<S.CareCheckLabel htmlFor="d">사무실</S.CareCheckLabel>
 						</S.CareCheckWrap>
 						<S.CareCheckWrap>
-							<S.CareCheckbox type="radio" name="specialty" id="e" />
+							<S.CareCheckbox type="radio" name="expert" value="상가" onChange={onChangeReducer} id="e" />
 							<S.CareCheckLabel htmlFor="e">상가</S.CareCheckLabel>
 						</S.CareCheckWrap>
 						<S.CareCheckWrap>
-							<S.CareCheckbox type="radio" name="specialty" id="f" />
+							<S.CareCheckbox type="radio" name="expert" value="빌딩" onChange={onChangeReducer} id="f" />
 							<S.CareCheckLabel htmlFor="f">빌딩</S.CareCheckLabel>
 						</S.CareCheckWrap>
 						<S.CareCheckWrap>
-							<S.CareCheckbox type="radio" name="specialty" id="g" />
+							<S.CareCheckbox type="radio" name="expert" value="공장/창고" onChange={onChangeReducer} id="g" />
 							<S.CareCheckLabel htmlFor="g">공장/창고</S.CareCheckLabel>
 						</S.CareCheckWrap>
 						<S.CareCheckWrap>
-							<S.CareCheckbox type="radio" name="specialty" id="h" />
+							<S.CareCheckbox type="radio" name="expert" value="지식산업센터" onChange={onChangeReducer} id="h" />
 							<S.CareCheckLabel htmlFor="h">지식산업센터</S.CareCheckLabel>
 						</S.CareCheckWrap>
 						<S.CareCheckWrap>
-							<S.CareCheckbox type="radio" name="specialty" id="i" />
+							<S.CareCheckbox type="radio" name="expert" value="경매" onChange={onChangeReducer} id="i" />
 							<S.CareCheckLabel htmlFor="i">경매</S.CareCheckLabel>
 						</S.CareCheckWrap>
 						<S.CareCheckWrap>
-							<S.CareCheckbox type="radio" name="specialty" id="j" />
+							<S.CareCheckbox type="radio" name="expert" value="재개발/재건축" onChange={onChangeReducer} id="j" />
 							<S.CareCheckLabel htmlFor="j">재개발/재건축</S.CareCheckLabel>
 						</S.CareCheckWrap>
 						<S.CareCheckWrap>
-							<S.CareCheckbox type="radio" name="specialty" id="k" />
+							<S.CareCheckbox type="radio" name="expert" value="병원/요양원" onChange={onChangeReducer} id="k" />
 							<S.CareCheckLabel htmlFor="k">병원/요양원</S.CareCheckLabel>
 						</S.CareCheckWrap>
 						<S.CareCheckWrap>
-							<S.CareCheckbox type="radio" name="specialty" id="l" />
+							<S.CareCheckbox type="radio" name="expert" value="반려동물 전문 중개사" onChange={onChangeReducer} id="l" />
 							<S.CareCheckLabel htmlFor="l">반려동물 전문 중개사</S.CareCheckLabel>
 						</S.CareCheckWrap>
 						<S.CareCheckWrap>
-							<S.CareCheckbox type="radio" name="specialty" id="m" />
+							<S.CareCheckbox type="radio" name="expert" value="저소득층 전문 중개사" onChange={onChangeReducer} id="m" />
 							<S.CareCheckLabel htmlFor="m">저소득층 전문 중개사</S.CareCheckLabel>
 						</S.CareCheckWrap>
 						<S.CareCheckWrap>
-							<S.CareCheckbox type="radio" name="specialty" id="n" />
+							<S.CareCheckbox type="radio" name="expert" value="기타" onChange={onChangeReducer} id="n" />
 							<S.CareCheckLabel htmlFor="n">기타</S.CareCheckLabel>
-							<S.CareInputEtc />
+							<S.CareInputEtc value={expertEtc} onChange={(e) => setExpertEtc(e.target.value)} disabled={expert === '기타' ? false : true} />
 						</S.CareCheckWrap>
 					</S.CareInputWrap>
 					<S.CareInputWrap>
 						<S.CareInputTitle>유형을 선택해주세요.</S.CareInputTitle>
 						<S.CareCheckWrap>
-							<S.CareCheckbox type="radio" name="type" id="a1" />
+							<S.CareCheckbox type="radio" name="category" value="매매" onChange={onChangeReducer} id="a1" />
 							<S.CareCheckLabel htmlFor="a1">매매</S.CareCheckLabel>
 						</S.CareCheckWrap>
 						<S.CareCheckWrap>
-							<S.CareCheckbox type="radio" name="type" id="a2" />
+							<S.CareCheckbox type="radio" name="category" value="전세" onChange={onChangeReducer} id="a2" />
 							<S.CareCheckLabel htmlFor="a2">전세</S.CareCheckLabel>
 						</S.CareCheckWrap>
 						<S.CareCheckWrap>
-							<S.CareCheckbox type="radio" name="type" id="a3" />
+							<S.CareCheckbox type="radio" name="category" value="월세" onChange={onChangeReducer} id="a3" />
 							<S.CareCheckLabel htmlFor="a3">월세</S.CareCheckLabel>
 						</S.CareCheckWrap>
 						<S.CareCheckWrap>
-							<S.CareCheckbox type="radio" name="type" id="a4" />
+							<S.CareCheckbox type="radio" name="category" value="기타" onChange={onChangeReducer} id="a4" />
 							<S.CareCheckLabel htmlFor="a4">기타</S.CareCheckLabel>
-							<S.CareInputEtc />
+							<S.CareInputEtc value={categoryEtc} onChange={(e) => setCategoryEtc(e.target.value)} disabled={category === '기타' ? false : true} />
 						</S.CareCheckWrap>
 					</S.CareInputWrap>
 					<S.CareInputWrap>
 						<S.CareInputTitle>보유 중이신 자본금을 선택해주세요.</S.CareInputTitle>
 						<S.CareCheckWrap>
-							<S.CareCheckbox type="radio" name="money" id="b1" />
+							<S.CareCheckbox type="radio" name="capital" value="5,000만원 미만" onChange={onChangeReducer} id="b1" />
 							<S.CareCheckLabel htmlFor="b1">5,000만원 미만</S.CareCheckLabel>
 						</S.CareCheckWrap>
 						<S.CareCheckWrap>
-							<S.CareCheckbox type="radio" name="money" id="b2" />
+							<S.CareCheckbox type="radio" name="capital" value="1억 ~ 3억 미만" onChange={onChangeReducer} id="b2" />
 							<S.CareCheckLabel htmlFor="b2">1억 ~ 3억 미만</S.CareCheckLabel>
 						</S.CareCheckWrap>
 						<S.CareCheckWrap>
-							<S.CareCheckbox type="radio" name="money" id="b3" />
+							<S.CareCheckbox type="radio" name="capital" value="5억 미만" onChange={onChangeReducer} id="b3" />
 							<S.CareCheckLabel htmlFor="b3">5억 미만</S.CareCheckLabel>
 						</S.CareCheckWrap>
 						<S.CareCheckWrap>
-							<S.CareCheckbox type="radio" name="money" id="b4" />
+							<S.CareCheckbox type="radio" name="capital" value="5억 이상" onChange={onChangeReducer} id="b4" />
 							<S.CareCheckLabel htmlFor="b4">5억 이상</S.CareCheckLabel>
 						</S.CareCheckWrap>
 						<S.CareCheckWrap>
-							<S.CareCheckbox type="radio" name="money" id="a4" />
+							<S.CareCheckbox type="radio" name="capital" value="기타" onChange={onChangeReducer} id="a4" />
 							<S.CareCheckLabel htmlFor="a4">기타</S.CareCheckLabel>
-							<S.CareInputEtc />
+							<S.CareInputEtc value={capitalEtc} onChange={(e) => setCapitalEtc(e.target.value)} disabled={capital === '기타' ? false : true} />
 						</S.CareCheckWrap>
 					</S.CareInputWrap>
 					<S.CareInputWrap>
 						<S.CareInputTitle>입주 가능일을 선택해주세요.</S.CareInputTitle>
-						<S.CareInput type="date" />
+						<S.CareInput type="date" onChange={onChangeReducer} name="movingInDate" value={movingInDate} />
 					</S.CareInputWrap>
 					<S.CareInputWrap>
 						<S.CareInputTitle>생활 서비스를 신청하시겠습니까?</S.CareInputTitle>
 						<S.CareCheckWrap>
-							<S.CareCheckbox type="radio" id="9a" name="service" />
+							<S.CareCheckbox type="radio" id="9a" name="isOK" onClick={() => setIsOK(true)} />
 							<S.CareCheckLabel htmlFor="9a">네</S.CareCheckLabel>
 						</S.CareCheckWrap>
 					</S.CareInputWrap>
 					<S.CareInputWrap>
 						<S.CareInputTitle>필요하신 서비스를 선택해주세요.</S.CareInputTitle>
 						<S.CareCheckWrap>
-							<S.CareCheckbox type="checkbox" name="needService" id="10a" />
+							<S.CareCheckbox type="checkbox" name="service" value="이사" onChange={(e) => setService([...service, e.target.value])} id="10a" />
 							<S.CareCheckLabel htmlFor="10a">이사</S.CareCheckLabel>
 						</S.CareCheckWrap>
 						<S.CareCheckWrap>
-							<S.CareCheckbox type="checkbox" name="needService" id="10b" />
+							<S.CareCheckbox type="checkbox" name="service" value="청소" onChange={(e) => setService([...service, e.target.value])} id="10b" />
 							<S.CareCheckLabel htmlFor="10b">청소</S.CareCheckLabel>
 						</S.CareCheckWrap>
 						<S.CareCheckWrap>
-							<S.CareCheckbox type="checkbox" name="needService" id="10c" />
+							<S.CareCheckbox type="checkbox" name="service" value="인테리어" onChange={(e) => setService([...service, e.target.value])} id="10c" />
 							<S.CareCheckLabel htmlFor="10c">인테리어</S.CareCheckLabel>
 						</S.CareCheckWrap>
 						<S.CareCheckWrap>
-							<S.CareCheckbox type="checkbox" name="needService" id="10d" />
+							<S.CareCheckbox type="checkbox" name="service" value="폐가전" onChange={(e) => setService([...service, e.target.value])} id="10d" />
 							<S.CareCheckLabel htmlFor="10d">폐가전</S.CareCheckLabel>
 						</S.CareCheckWrap>
 						<S.CareCheckWrap>
-							<S.CareCheckbox type="checkbox" name="needService" id="10e" />
+							<S.CareCheckbox type="checkbox" name="service" value="대출" onChange={(e) => setService([...service, e.target.value])} id="10e" />
 							<S.CareCheckLabel htmlFor="10e">대출</S.CareCheckLabel>
 						</S.CareCheckWrap>
 						<S.CareCheckWrap>
-							<S.CareCheckbox type="checkbox" name="needService" id="10f" />
+							<S.CareCheckbox type="checkbox" name="service" value="세무사" onChange={(e) => setService([...service, e.target.value])} id="10f" />
 							<S.CareCheckLabel htmlFor="10f">세무사</S.CareCheckLabel>
 						</S.CareCheckWrap>
 						<S.CareCheckWrap>
-							<S.CareCheckbox type="checkbox" name="needService" id="10g" />
+							<S.CareCheckbox type="checkbox" name="service" value="법무사" onChange={(e) => setService([...service, e.target.value])} id="10g" />
 							<S.CareCheckLabel htmlFor="10g">법무사</S.CareCheckLabel>
 						</S.CareCheckWrap>
 					</S.CareInputWrap>
 					<S.CareInputWrap>
 						<S.CareInputTitle>기타 요청 사항이 있나요?</S.CareInputTitle>
-						<S.CareInput placeholder="" />
+						<S.CareInput placeholder="" name="etcReq" value={etcReq} onChange={onChangeReducer} />
 					</S.CareInputWrap>
 					<S.CareDescriptionWrap>
 						<S.CareDescription>
@@ -229,10 +352,7 @@ const Care = () => {
 							<br /> 않을 경우 컨설팅 및 케어 서비스 관련 모든 서비스는 불가능합니다.
 						</S.CareDescription>
 					</S.CareDescriptionWrap>
-					<S.CareButton onClick={onClickCare}>회원가입하기</S.CareButton>
-					<S.NavigateCare to="/login">
-						이미 계정이 있으신가요? <span>로그인하기</span>
-					</S.NavigateCare>
+					<S.CareButton onClick={onClickSubmitForm}>신청하기</S.CareButton>
 				</S.CareBox>
 			</S.CareWrap>
 		</>
