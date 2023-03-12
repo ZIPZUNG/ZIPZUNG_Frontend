@@ -1,9 +1,12 @@
+import { Header } from 'allFiles'
 import React from 'react'
+import * as S from './style'
 
 const Home = () => {
 	return (
 		<div>
-			<h1>Home</h1>
+			<Header />
+			<S.HomeMainContainer></S.HomeMainContainer>
 		</div>
 	)
 }
